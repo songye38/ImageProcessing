@@ -5,6 +5,7 @@ Toggle t;
 Button pngBtn;
 Slider e;
 Toggle et;
+boolean eraserStatus = false;
 
 
 
@@ -54,7 +55,7 @@ void setupGUI()
                 .setBackgroundColor(color(0, 64))
                 .setBackgroundHeight(150)
                 ;
-   et = cp5.addToggle("eraser")
+   et = cp5.addToggle("toggle")
            .setPosition(10,10)
            .setSize(40,40)
            .setValue(false)
@@ -79,14 +80,21 @@ void setupGUI()
                  ;
   
   accordion.open(0,1,2,3);
-  
   accordion.setCollapseMode(Accordion.MULTI);
 }
 
 
 void drawGUI()
 {
-  
+  if(eraserStatus)
+  {
+    doEraser = true;
+    print("do eraser status ");
+    println(doEraser);
+  }
+  else doEraser = false;
+  print("do eraser status ");
+    println(doEraser);
 }
 
 void controlEvent(ControlEvent theControlEvent) {
@@ -104,12 +112,26 @@ void controlEvent(ControlEvent theControlEvent) {
   if(theControlEvent.isFrom("exportPng")){
     saveOneFrame = true;
   }
-  if(theControlEvent.isFrom("eraser")){
-    doEraser = true;
-  }
+  //if(theControlEvent.isFrom("eraser")){
+  //  doEraser = true;
+  //  println("doEraser status");
+  //  println(doEraser);
+  //}
   if(theControlEvent.isFrom("eraserSize")){
     int a =(int)theControlEvent.getController().getValue();
     eraserWeight = a;
   }
-  
+}
+
+
+void toggle(boolean theFlag) {
+  if(theFlag==true) {
+    eraserStatus = true;
+    print("eraserStatus in toogle function");
+    println(eraserStatus);
+  } else {
+    eraserStatus = false;
+    print("eraserStatus in toogle function");
+    println(eraserStatus);
+  }
 }
