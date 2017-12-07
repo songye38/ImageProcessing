@@ -12,7 +12,7 @@ import java.util.Calendar;
 String colorHexValue;
 int lineWeight;
 boolean lineColorSelectStatus = false;
-boolean savePDF = false;
+boolean saveOneFrame = false;
 boolean doEraser =false;
 int eraserWeight;
 
@@ -30,10 +30,10 @@ void setup() {
 }
 
 void draw() {
-  if(savePDF)
+  if(saveOneFrame)
   {
-    exportToPdf();
-    println("begin");
+     saveFrame(timestamp()+".png");
+    saveOneFrame = false;
   }
   drawGUI();
    points = new Point[max+n][2];
@@ -58,12 +58,6 @@ void draw() {
      lines[n].setLineColor(color(255,255,0));
      lines[n].setLineThickness(eraserWeight);
      lines[n++].draw();
-  }
-  if(savePDF)
-  {
-    savePDF = false;
-    endRecord();
-    println("end of pdf file");
   }
   lineColorSelectStatus = false;
   doEraser = false;

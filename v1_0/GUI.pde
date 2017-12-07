@@ -2,9 +2,10 @@
 ColorWheel cw;
 Slider s;
 Toggle t;
-Button pdfBtn;
+Button pngBtn;
 Slider e;
 Toggle et;
+
 
 
 void setupGUI()
@@ -42,13 +43,8 @@ void setupGUI()
                 .setBackgroundColor(color(0, 64))
                 .setBackgroundHeight(150)
                 ;
-  //t = cp5.addToggle("save")
-  //       .setPosition(15,10)
-  //       .setSize(50,20)
-  //       .setValue(false)
-  //       .moveTo(g3)
-  //       ;
-  pdfBtn = cp5.addButton("exportPdf")
+
+  pngBtn = cp5.addButton("exportPng")
               .setPosition(10,10)
               .setSize(40,40)
               .moveTo(g3)
@@ -70,35 +66,6 @@ void setupGUI()
            .setValue(10)
            .moveTo(g4)
            ;
-  
-
-  //// group number 3, contains a bang and a slider
-  //Group g3 = cp5.addGroup("myGroup3")
-  //              .setBackgroundColor(color(0, 64))
-  //              .setBackgroundHeight(150)
-  //              ;
-  
-  //cp5.addBang("shuffle")
-  //   .setPosition(10,20)
-  //   .setSize(40,50)
-  //   .moveTo(g3)
-  //   ;
-     
-  //cp5.addSlider("hello")
-  //   .setPosition(60,20)
-  //   .setSize(100,20)
-  //   .setRange(100,500)
-  //   .setValue(100)
-  //   .moveTo(g3)
-  //   ;
-     
-  //cp5.addSlider("world")
-  //   .setPosition(60,50)
-  //   .setSize(100,20)
-  //   .setRange(100,500)
-  //   .setValue(200)
-  //   .moveTo(g3)
-  //   ;
 
   // create a new accordion
   // add g1, g2, and g3 to the accordion.
@@ -110,38 +77,10 @@ void setupGUI()
                  .addItem(g3)
                  .addItem(g4)
                  ;
-  //  cp5.mapKeyFor(new ControlKey() {public void keyEvent() {accordion.open(0,1,2);}}, 'o');
-  //cp5.mapKeyFor(new ControlKey() {public void keyEvent() {accordion.close(0,1,2);}}, 'c');
-  //cp5.mapKeyFor(new ControlKey() {public void keyEvent() {accordion.setWidth(300);}}, '1');
-  //cp5.mapKeyFor(new ControlKey() {public void keyEvent() {accordion.setPosition(0,0);accordion.setItemHeight(190);}}, '2'); 
-  //cp5.mapKeyFor(new ControlKey() {public void keyEvent() {accordion.setCollapseMode(ControlP5.ALL);}}, '3');
-  //cp5.mapKeyFor(new ControlKey() {public void keyEvent() {accordion.setCollapseMode(ControlP5.SINGLE);}}, '4');
-  //cp5.mapKeyFor(new ControlKey() {public void keyEvent() {cp5.remove("myGroup1");}}, '0');
   
   accordion.open(0,1,2,3);
   
   accordion.setCollapseMode(Accordion.MULTI);
-
-                 //.addItem(g3)
-                 ;
-    cp5.mapKeyFor(new ControlKey() {public void keyEvent() {accordion.open(0,1,2);}}, 'o');
-  cp5.mapKeyFor(new ControlKey() {public void keyEvent() {accordion.close(0,1,2);}}, 'c');
-  cp5.mapKeyFor(new ControlKey() {public void keyEvent() {accordion.setWidth(300);}}, '1');
-  cp5.mapKeyFor(new ControlKey() {public void keyEvent() {accordion.setPosition(0,0);accordion.setItemHeight(190);}}, '2'); 
-  cp5.mapKeyFor(new ControlKey() {public void keyEvent() {accordion.setCollapseMode(ControlP5.ALL);}}, '3');
-  cp5.mapKeyFor(new ControlKey() {public void keyEvent() {accordion.setCollapseMode(ControlP5.SINGLE);}}, '4');
-  cp5.mapKeyFor(new ControlKey() {public void keyEvent() {cp5.remove("myGroup1");}}, '0');
-  
-  accordion.open(0,1,2);
-  
-  // use Accordion.MULTI to allow multiple group 
-  // to be open at a time.
-  accordion.setCollapseMode(Accordion.MULTI);
-  
-  // when in SINGLE mode, only 1 accordion  
-  // group can be open at a time.  
-  // accordion.setCollapseMode(Accordion.SINGLE);
-                
 }
 
 
@@ -157,23 +96,13 @@ void controlEvent(ControlEvent theControlEvent) {
     int rgbInt = cp5.get(ColorWheel.class,"c").getRGB();
     String hexValue = String.format("#%06x",rgbInt);
     colorHexValue = hexValue;
-
-    print("line status :");
-    println(lineColorSelectStatus);
-    //int rgbInt = cp5.get(ColorWheel.class,"c").getRGB();
-    //String hexValue = String.format("#%06x",rgbInt);
-    //colorHexValue = hexValue;
-    ////print("font color value : ");
-    ////println(colorHexValue);
   }
   if(theControlEvent.isFrom("weight")){
     int a =(int)theControlEvent.getController().getValue();
     lineWeight = a;
   }
-  if(theControlEvent.isFrom("exportPdf")){
-    savePDF = true;
-    print("save pdf status");
-    println(savePDF);
+  if(theControlEvent.isFrom("exportPng")){
+    saveOneFrame = true;
   }
   if(theControlEvent.isFrom("eraser")){
     doEraser = true;
