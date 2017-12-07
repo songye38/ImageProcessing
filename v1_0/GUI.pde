@@ -89,12 +89,8 @@ void drawGUI()
   if(eraserStatus)
   {
     doEraser = true;
-    print("do eraser status ");
-    println(doEraser);
   }
   else doEraser = false;
-  print("do eraser status ");
-    println(doEraser);
 }
 
 void controlEvent(ControlEvent theControlEvent) {
@@ -112,11 +108,6 @@ void controlEvent(ControlEvent theControlEvent) {
   if(theControlEvent.isFrom("exportPng")){
     saveOneFrame = true;
   }
-  //if(theControlEvent.isFrom("eraser")){
-  //  doEraser = true;
-  //  println("doEraser status");
-  //  println(doEraser);
-  //}
   if(theControlEvent.isFrom("eraserSize")){
     int a =(int)theControlEvent.getController().getValue();
     eraserWeight = a;
