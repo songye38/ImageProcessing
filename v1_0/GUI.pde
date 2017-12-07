@@ -1,24 +1,19 @@
 
 ColorWheel cw;
 Slider s;
-<<<<<<< HEAD
 Toggle t;
 Button pdfBtn;
 Slider e;
 Toggle et;
-=======
->>>>>>> ab84d0293620913717c1515995521211441c03de
+
 
 void setupGUI()
 {
     cp5 = new ControlP5(this);
   
   // group number 1, contains 2 bangs
-<<<<<<< HEAD
-  Group g1 = cp5.addGroup("chooseColor")
-=======
   Group g1 = cp5.addGroup("myGroup1")
->>>>>>> ab84d0293620913717c1515995521211441c03de
+
                 .setBackgroundColor(color(0, 64))
                 .setBackgroundHeight(180)
                 ;
@@ -28,11 +23,10 @@ void setupGUI()
   
      
   // group number 2, contains a radiobutton
-<<<<<<< HEAD
-  Group g2 = cp5.addGroup("Brush Weight")
-=======
+
+
   Group g2 = cp5.addGroup("myGroup2")
->>>>>>> ab84d0293620913717c1515995521211441c03de
+
                 .setBackgroundColor(color(0, 64))
                 .setBackgroundHeight(150)
                 ;
@@ -42,7 +36,7 @@ void setupGUI()
           .setValue(20)
           .moveTo(g2);
   
-<<<<<<< HEAD
+
   // group number 3, contains a bang and a slider
   Group g3 = cp5.addGroup("save")
                 .setBackgroundColor(color(0, 64))
@@ -77,7 +71,7 @@ void setupGUI()
            .moveTo(g4)
            ;
   
-=======
+
   //// group number 3, contains a bang and a slider
   //Group g3 = cp5.addGroup("myGroup3")
   //              .setBackgroundColor(color(0, 64))
@@ -106,7 +100,6 @@ void setupGUI()
   //   .moveTo(g3)
   //   ;
 
->>>>>>> ab84d0293620913717c1515995521211441c03de
   // create a new accordion
   // add g1, g2, and g3 to the accordion.
   accordion = cp5.addAccordion("acc")
@@ -114,7 +107,6 @@ void setupGUI()
                  .setWidth(180)
                  .addItem(g1)
                  .addItem(g2)
-<<<<<<< HEAD
                  .addItem(g3)
                  .addItem(g4)
                  ;
@@ -129,7 +121,7 @@ void setupGUI()
   accordion.open(0,1,2,3);
   
   accordion.setCollapseMode(Accordion.MULTI);
-=======
+
                  //.addItem(g3)
                  ;
     cp5.mapKeyFor(new ControlKey() {public void keyEvent() {accordion.open(0,1,2);}}, 'o');
@@ -150,7 +142,6 @@ void setupGUI()
   // group can be open at a time.  
   // accordion.setCollapseMode(Accordion.SINGLE);
                 
->>>>>>> ab84d0293620913717c1515995521211441c03de
 }
 
 
@@ -162,25 +153,23 @@ void drawGUI()
 void controlEvent(ControlEvent theControlEvent) {
   if(theControlEvent.isFrom("c")){
     lineColorSelectStatus = true;
-<<<<<<< HEAD
+
     int rgbInt = cp5.get(ColorWheel.class,"c").getRGB();
     String hexValue = String.format("#%06x",rgbInt);
     colorHexValue = hexValue;
-=======
+
     print("line status :");
     println(lineColorSelectStatus);
-    int rgbInt = cp5.get(ColorWheel.class,"c").getRGB();
-    String hexValue = String.format("#%06x",rgbInt);
-    colorHexValue = hexValue;
-    //print("font color value : ");
-    //println(colorHexValue);
->>>>>>> ab84d0293620913717c1515995521211441c03de
+    //int rgbInt = cp5.get(ColorWheel.class,"c").getRGB();
+    //String hexValue = String.format("#%06x",rgbInt);
+    //colorHexValue = hexValue;
+    ////print("font color value : ");
+    ////println(colorHexValue);
   }
   if(theControlEvent.isFrom("weight")){
     int a =(int)theControlEvent.getController().getValue();
     lineWeight = a;
   }
-<<<<<<< HEAD
   if(theControlEvent.isFrom("exportPdf")){
     savePDF = true;
     print("save pdf status");
@@ -193,7 +182,5 @@ void controlEvent(ControlEvent theControlEvent) {
     int a =(int)theControlEvent.getController().getValue();
     eraserWeight = a;
   }
-=======
->>>>>>> ab84d0293620913717c1515995521211441c03de
   
 }
